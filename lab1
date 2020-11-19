@@ -1,0 +1,11 @@
+import csv
+
+dataset = [ [], [], [], [], [] ]
+measurements = [ "sepal length", "sepal width", "petal length", "petal width" ]
+with open("iris.csv") as f:
+    for row in csv.reader(f):
+        if len(row) == 5: # only do this if the number of columns is 5, as expected
+            for i in range(4): # the 4 measurements should be converted to float
+                dataset[i].append(float(row[i]))
+            # position 4 is the iris type, which is to be kept as a string
+            dataset[4].append(row[4])
